@@ -1,3 +1,5 @@
-build
-dist
-*.egg-info
+build/
+dist/
+fmath.egg-info/
+.ipynb_checkpoints/
+fmath-1.0.0/

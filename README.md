@@ -2,6 +2,8 @@
 
 A library for Python for fast math on floats
 
+See the [demo](./test.ipynb)
+
 ## Installation
 
 ### From PyPI
@@ -18,7 +20,7 @@ pip3 install git+https://github.com/donno2048/fmath
 
 ## Usage
 
-Just replace 
+Just replace
 
 ```py
 from math import sqrt
