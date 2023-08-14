@@ -2,7 +2,7 @@
 
 A library for Python for fast math on floats
 
-See the [demo](./test.ipynb)
+See the [demo](https://github.com/donno2048/fmath/blob/master/test.ipynb)
 
 ## Installation
 
