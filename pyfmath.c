@@ -8,10 +8,10 @@ extern "C" {
 #define add_name(func) #func, _##func
 #define parse(arg) (*(int64_t*)_parse(PyFloat_AS_DOUBLE(arg)))
 #define parsed parse(args)
-#define _declare(func, value, ...) static PyObject * func(__VA_ARGS__) {return value;}
+#define _declare(func, value, ...) static inline PyObject * func(__VA_ARGS__) {return value;}
 #define declare(func, operation, type) _declare(_##func, Py##type##_FromLong(operation), PyObject * self, PyObject * args)
 const static int64_t one = 0x3FF0000000000000;
-static void * _parse(double arg){return & arg;}
+static inline void * _parse(double arg){return & arg;}
 _declare(PyFloat_FromLong, PyFloat_FromDouble(*(double*)&x), int64_t x);
 declare(abs, parsed & INT64_MAX, Float);
 declare(sign, ~parsed >> 0x3F, Bool);
