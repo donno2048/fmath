@@ -1,37 +1,36 @@
-# nothingness
+# fmath
 
-This is nothing, just a template for PyPI packages
+A library for Python for fast math on floats
 
 ## Installation
 
 ### From PyPI
 
 ```sh
-pip3 install nothingness
+pip3 install fmath
 ```
 
 ### From GitHub
 
 ```sh
-pip3 install git+https://github.com/donno2048/nothingness
+pip3 install git+https://github.com/donno2048/fmath
 ```
 
 ## Usage
 
-### Import fun from \_\_init__.py
+Just replace 
 
 ```py
-from nothingness import fun
+from math import sqrt
+pow = pow
+abs = abs
+sign = lambda x: x >= 0
 ```
 
-### Run \_\_main__.py
+with
 
-```sh
-python3 -m nothingness
+```py
+from fmath import sqrt, pow, abs, sign
 ```
 
-### Run main from \_\_main__.py
-
-```sh
-nothingness
-```
+and make sure the input is `float`
