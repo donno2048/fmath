@@ -1,6 +1,6 @@
 # fmath
 
-A library for Python for fast math on floats
+A library for Python for fast math on floats on Windows.
 
 See the [demo](https://github.com/donno2048/fmath/blob/master/test.ipynb)
 
