@@ -1,7 +1,9 @@
 from setuptools import setup, Extension
+from sysconfig import get_config_var
+
 setup(
     name='fmath',
-    version='1.0.1',
+    version='1.0.2',
     license='MIT',
     author='Elisha Hollander',
     author_email='just4now666666@gmail.com',
@@ -16,6 +18,6 @@ setup(
     },
     python_requires='>=3.0',
     classifiers=['Programming Language :: Python :: 3'],
-    ext_modules=[Extension('fmath', ['pyfmath.c'])],
+    ext_modules=[Extension('fmath', ['pyfmath.c'], extra_compile_args=(get_config_var('CFLAGS') + " -O3 -ffast-math -march=native").split())],
     zip_safe=False,
 )
