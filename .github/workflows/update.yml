@@ -13,4 +13,4 @@ jobs:
         git config --global user.name "donno2048"
         git add .
         git commit -m "update notebook"
-        git push
+        git push origin HEAD:${GITHUB_REF##*/}
