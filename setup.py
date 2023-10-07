@@ -18,6 +18,6 @@ setup(
     },
     python_requires='>=3.0',
     classifiers=['Programming Language :: Python :: 3'],
-    ext_modules=[Extension('fmath', ['pyfmath.c'], extra_compile_args=((get_config_var('CFLAGS') or '') + " -O3 -ffast-math -march=native").split())],
+    ext_modules=[Extension('fmath', ['pyfmath.c'], extra_compile_args=((get_config_var('CFLAGS') or '') + " -O3 -ffast-math").split())],
     zip_safe=False,
 )
