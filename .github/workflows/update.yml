@@ -5,10 +5,11 @@ jobs:
   update:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+      with:
+        ref: '${{ github.head_ref }}'
     - uses: actions/setup-python@v3
     - run: |
-        git pull origin ${{ github.head_ref }}
         python3 setup.py install
         pip3 install jupyter --user
         jupyter nbconvert --execute --to notebook --inplace test.ipynb
