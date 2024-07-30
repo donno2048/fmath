@@ -23,7 +23,7 @@ pip3 install git+https://github.com/donno2048/fmath
 Just replace
 
 ```py
-from math import sqrt
+from math import sqrt, log2
 pow = pow
 abs = abs
 sign = lambda x: x >= 0
@@ -32,7 +32,7 @@ sign = lambda x: x >= 0
 with
 
 ```py
-from fmath import sqrt, pow, abs, sign
+from fmath import sqrt, pow, abs, sign, log2
 ```
 
 and make sure the input is `float`
