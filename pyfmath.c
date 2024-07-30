@@ -20,13 +20,13 @@ _declare(_pow, PyFloat_FromLong((parse(args[0]) - one) * PyFloat_AS_DOUBLE(args[
 const static inline PyObject *_min(const PyObject * self, const PyObject *const *args, const Py_ssize_t nargs) {
     long long m = parse(args[0]), cur;
     for (int i = 1; i < nargs; cur = parse(args[i++]))
-        m ^= (cur ^ m) & -(*(double*)cur < *(double*)m);
+        m ^= (cur ^ m) & -(long long)(*(double*)&cur < *(double*)&m);
     return PyFloat_FromLong(m);
 }
 const static inline PyObject *_max(const PyObject * self, const PyObject *const *args, const Py_ssize_t nargs) {
     long long m = parse(args[0]), cur;
     for (int i = 1; i < nargs; cur = parse(args[i++]))
-        m ^= (cur ^ m) & -(*(double*)cur > *(double*)m);
+        m ^= (cur ^ m) & -(long long)(*(double*)&cur > *(double*)&m);
     return PyFloat_FromLong(m);
 }
 static PyMethodDef fmath_methods[] = {
