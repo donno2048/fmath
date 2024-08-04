@@ -14,6 +14,7 @@ jobs:
         python3 setup.py install
         pip3 cache purge
         pip3 install jupyter matplotlib ipympl numpy
+        activate base
         jupyter nbconvert --execute --to notebook --inplace test.ipynb
         git config --global user.email "just4now666666@gmail.com"
         git config --global user.name "donno2048"
