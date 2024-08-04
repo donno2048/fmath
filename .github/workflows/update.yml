@@ -12,8 +12,7 @@ jobs:
     - run: |
         python3 -m pip install -U pip setuptools
         python3 setup.py install
-        pip3 install jupyter matplotlib numpy ipympl
-        jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-matplotlib
+        pip3 install jupyter matplotlib numpy ipympl -U
         jupyter nbconvert --execute --to notebook --inplace test.ipynb
         git config --global user.email "just4now666666@gmail.com"
         git config --global user.name "donno2048"
