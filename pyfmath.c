@@ -10,12 +10,13 @@ extern "C" {
 #define _declare(func, value, ...) const static inline PyObject * func(__VA_ARGS__) {return value;}
 #define declare(func, operation, typeA, typeB) _declare(_##func, Py##typeA##_From##typeB(operation), const PyObject * self, const PyObject * args)
 const long long one = 0x3FF0000000000000;
+const double big = 1 << 0x1A;
 const static inline void * _parse(const double arg){return & arg;}
 _declare(PyFloat_FromLong, PyFloat_FromDouble(*(double*)&x), const long long x);
 declare(abs, parsed & INT64_MAX, Float, Long);
 declare(sign, ~parsed >> 0x3F, Bool, Long);
 declare(sqrt, (parsed >> 1) + (one >> 1), Float, Long);
-declare(log2, (double)(parsed >> 0x34) - 1023, Float, Double);
+declare(log2, (double)(parsed) / big / big- 1023, Float, Double);
 _declare(_pow, PyFloat_FromLong((parse(args[0]) - one) * PyFloat_AS_DOUBLE(args[1]) + one), const PyObject * self, const PyObject *const *args, const Py_ssize_t nargs);
 const static inline PyObject *_min(const PyObject * self, const PyObject *const *args, const Py_ssize_t nargs) {
     long long m = parse(args[0]), cur = parse(args[nargs - 1]);
