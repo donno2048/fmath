@@ -2,7 +2,7 @@ on: pull_request
 permissions:
   contents: write
 jobs:
-  update:
+  update-windows:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
@@ -13,7 +13,24 @@ jobs:
         python3 -m pip install -U pip setuptools
         python3 setup.py install
         pip3 install jupyter --user
-        jupyter nbconvert --execute --to notebook --inplace test.ipynb
+        jupyter nbconvert --execute --to notebook --inplace test-windows.ipynb
+        git config --global user.email "just4now666666@gmail.com"
+        git config --global user.name "donno2048"
+        git add .
+        git commit -m "update notebook"
+        git push origin HEAD:${{ github.head_ref }}
+  update-linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: '${{ github.head_ref }}'
+    - uses: actions/setup-python@v3
+    - run: |
+        python3 -m pip install -U pip setuptools
+        python3 setup.py install
+        pip3 install jupyter --user
+        jupyter nbconvert --execute --to notebook --inplace test-linux.ipynb
         git config --global user.email "just4now666666@gmail.com"
         git config --global user.name "donno2048"
         git add .

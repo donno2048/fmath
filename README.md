@@ -1,8 +1,8 @@
 # fmath
 
-A library for Python for fast math on floats on Windows.
+A library for Python for fast math on floats.
 
-See the [demo](https://github.com/donno2048/fmath/blob/master/test.ipynb)
+See the [demo for Windows](./test-windows.ipynb) and the [demo for Linux](./test-linux.ipynb)
 
 ## Installation
 
