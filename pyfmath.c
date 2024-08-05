@@ -17,8 +17,22 @@ declare(sign, ~parsed >> 0x3F, Bool);
 declare(sqrt, (parsed >> 1) + (one >> 1), Float);
 _declare(_log2, PyFloat_FromDouble((double)(parsed >> 0x17) - 126.4), const PyObject * self, const PyObject * args);
 _declare(_pow, PyFloat_FromLong((parse(args[0]) - one) * PyFloat_AS_DOUBLE(args[1]) + one), const PyObject * self, const PyObject *const *args, const Py_ssize_t nargs);
+const static inline PyObject *_min(const PyObject * self, const PyObject *const *args, const Py_ssize_t nargs) {
+    long long m = parse(args[0]), cur = parse(args[nargs - 1]);
+    for (int i = 1; i < nargs; cur = parse(args[i++]))
+        m ^= (cur ^ m) & -(long long)(*(double*)&cur < *(double*)&m);
+    return PyFloat_FromLong(m);
+}
+const static inline PyObject *_max(const PyObject * self, const PyObject *const *args, const Py_ssize_t nargs) {
+    long long m = parse(args[0]), cur = parse(args[nargs - 1]);
+    for (int i = 1; i < nargs; cur = parse(args[i++]))
+        m ^= (cur ^ m) & -(long long)(*(double*)&cur > *(double*)&m);
+    return PyFloat_FromLong(m);
+}
 static PyMethodDef fmath_methods[] = {
     {add_name(pow), METH_FASTCALL, "pow: return x to the power of y"},
+    {add_name(min), METH_FASTCALL, "min: get the minimum value of a list"},
+    {add_name(max), METH_FASTCALL, "max: get the maximum value of a list"},
     {add_name(abs), METH_O, "abs: return the absolute value of x"},
     {add_name(sign), METH_O, "sign: return True if x>=0 else False"},
     {add_name(log2), METH_O, "log2: return the log base 2 of x"},

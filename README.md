@@ -26,13 +26,15 @@ Just replace
 from math import sqrt, log2
 pow = pow
 abs = abs
+min = min
+max = max
 sign = lambda x: x >= 0
 ```
 
 with
 
 ```py
-from fmath import sqrt, pow, abs, sign, log2
+from fmath import sqrt, pow, abs, sign, log2, min, max
 ```
 
 and make sure the input is `float`
