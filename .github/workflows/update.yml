@@ -16,8 +16,10 @@ jobs:
         python3 -m pip install -U pip setuptools
         python3 setup.py install
         pip3 install jupyter --user
-        jupyter nbconvert --execute --to notebook --inplace test-${${{ runner.os }},,}.ipynb
-        mv test-${${{ runner.os }},,}.ipynb ${{ runner.temp }}
+        jupyter nbconvert --execute --to notebook --inplace test-${os,,}.ipynb
+        mv test-${os,,}.ipynb ${{ runner.temp }}
+      env:
+        os: ${{ runner.os }}
     - uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.os }}
