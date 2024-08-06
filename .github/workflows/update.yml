@@ -14,12 +14,9 @@ jobs:
         python3 setup.py install
         pip3 install jupyter --user
         jupyter nbconvert --execute --to notebook --inplace test-windows.ipynb
-        git config --global user.email "just4now666666@gmail.com"
-        git config --global user.name "donno2048"
-        git add .
-        git commit -m "update notebook"
-        git pull origin HEAD:${{ github.head_ref }}
-        git push origin HEAD:${{ github.head_ref }}
+    - uses: actions/upload-artifact@v4
+      with:
+        path: test-windows.ipynb
   update-linux:
     runs-on: ubuntu-latest
     steps:
@@ -32,9 +29,18 @@ jobs:
         python3 setup.py install
         pip3 install jupyter --user
         jupyter nbconvert --execute --to notebook --inplace test-linux.ipynb
+    - uses: actions/upload-artifact@v4
+      with:
+        path: test-linux.ipynb
+  commit:
+    runs-on: ubuntu-latest 
+    needs: [update-linux, update-windows]
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/download-artifact@v2
+    - run: |
         git config --global user.email "just4now666666@gmail.com"
         git config --global user.name "donno2048"
         git add .
         git commit -m "update notebook"
-        git pull origin HEAD:${{ github.head_ref }}
         git push origin HEAD:${{ github.head_ref }}
