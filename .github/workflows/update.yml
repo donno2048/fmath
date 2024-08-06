@@ -37,7 +37,9 @@ jobs:
     needs: [update-linux, update-windows]
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v4
+      with:
+        merge-multiple: true
     - run: |
         git config --global user.email "just4now666666@gmail.com"
         git config --global user.name "donno2048"
