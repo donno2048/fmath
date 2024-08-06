@@ -2,7 +2,7 @@
 
 A library for Python for fast math on floats.
 
-See the [demo for Windows](./test-windows.ipynb) and the [demo for Linux](./test-linux.ipynb)
+See the [demo for Windows](./TestWindows.ipynb) and the [demo for Linux](./TestLinux.ipynb).
 
 ## Installation
 
